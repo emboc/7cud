@@ -1,0 +1,1 @@
+# Aplikacja do wyliczania wyniku w grze planszowej "7 Cudów"

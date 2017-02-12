@@ -1,0 +1,27 @@
+CACHE MANIFEST
+# Version 1
+# 1
+# 2015-09-21 20:09
+# Czyszczenie AppCache w Chrome: chrome://appcache-internals/
+# Cache odświeżany jest TYLKO I WYŁĄCZNIE po zmianie manifestu
+
+CACHE:
+css/siedemcudow192.png
+css/nauka1.png
+css/nauka2.png
+css/nauka3.png
+css/style.css
+
+NETWORK:
+# biała-lista obiektów nie podlegających CACHE
+
+FALLBACK:
+# This will enable imagename4.png to be as a replacement for
+# all resources under the images dir when there is no network connectivity.
+
+#images/ images/imagename4.png
+
+NETWORK:
+# This will prevent other network resources from being accessed.
+api/
+#images/imagename5.png
