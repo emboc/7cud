@@ -31,13 +31,14 @@
         <div class="title">Lista graczy</div>
         <div class="description">Nadaj nazwę każdemu z graczy.</div>
         <div>
-            <table class="people konflikt">
+            <table class="people">
                 <tr><td>Gracz 1</td><td><input type="text" id="player1name"></td></tr>
                 <tr><td>Gracz 2</td><td><input type="text" id="player2name"></td></tr>
                 <tr><td>Gracz 3</td><td><input type="text" id="player3name"></td></tr>
                 <tr><td>Gracz 4</td><td><input type="text" id="player4name"></td></tr>
                 <tr><td>Gracz 5</td><td><input type="text" id="player5name"></td></tr>
             </table>
+			<button class="add_player">Dodaj nowego gracza</button><button class="rem_player">Usuń ostatniego gracza</button>
         </div>
     </div>
 
@@ -224,10 +225,11 @@
         </div>
     </div>
 </div>
+<script type="text/javascript" src="jquery/jquery-3.1.1.js"></script>
 <script type="text/javascript">
-    (function(undefined) {
+    $(document).ready(function(undefined) {
         "use strict";
-        var $ = document.querySelectorAll.bind(document);
+        //var $ = document.querySelectorAll.bind(document);
         function setName(player, name) {
             for(var i = 0; i < player.length; i++) {
                 player[i].textContent = name;
@@ -249,7 +251,44 @@
             setName($('.player5name'), this.value);
         });
 		
+		var max_fields      = 7; // maksymalna liczba graczy
+		var wrapper         = $(".people"); //Pole wrapper
+		var add_button      = $(".add_player"); // ID przycisku do dodawania
+		var rem_button		= $(".rem_player"); // ID przycisku do usuwania
+		
+		var x = 5; // początkowa liczba graczy
+		$(add_button).click(function(e){ //kliknięcie przycisku
+			e.preventDefault();
+			if(x < max_fields){ 
+				x++; 
+				$(wrapper).append('<tr><td>Gracz '+x+'</td><td><input type="text" id="player'+x+'name"></td><td><a href="#" class="remove_field">X</a></td></tr>'); //add input box
+			} 
+		});
+    
+		$(wrapper).on("click",".remove_field", function(e){ //user click on remove text
+			e.preventDefault(); $(this).parent('td').parent('tr').remove(); x--;
+		})
+		
     })();
+	
+	/*$(document).ready(function() {
+		var max_fields      = 7; //maximum input boxes allowed
+		var wrapper         = $(".people"); //Fields wrapper
+		var add_button      = $(".add_player"); //Add button ID
+		
+		var x = 5; //initlal text box count
+		$(add_button).click(function(e){ //on add input button click
+			e.preventDefault();
+			if(x < max_fields){ //max input box allowed
+				x++; //text box increment
+				$(wrapper).append('<tr><td>Gracz 6</td><td><input type="text" id="player6name"><a href="#" class="remove_field">X</a></td></tr>'); //add input box
+			} 
+		});
+    
+		$(wrapper).on("click",".remove_field", function(e){ //user click on remove text
+			e.preventDefault(); $(this).parent('tr').remove(); x--;
+		})
+	});*/
 </script>
 </body>
 </html>
