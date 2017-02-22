@@ -44,15 +44,15 @@
 
     <div class="group">
         <div class="title"><span class="konflikt">1. Konflikty zbrojne</span></div>
-        <div class="description">Każdy z graczy dodaje swoje Żetony Zwycięstwa i Przegranej (sumamoże być ujemna!).</div>
+        <div class="description">Każdy z graczy dodaje swoje Żetony Zwycięstwa i Przegranej (suma może być ujemna!).</div>
         <div class="example">Przykład: Aleksandria zakończyła grę z żetonami: +1, +3, +5, -1, -1, -1 czyli w sumie 6 punktów.</div>
         <div>
             <table class="people konflikt">
-                <tr><td class="player1name"></td><td><input type="number"></td></tr>
-                <tr><td class="player2name"></td><td><input type="number"></td></tr>
-                <tr><td class="player3name"></td><td><input type="number"></td></tr>
-                <tr><td class="player4name"></td><td><input type="number"></td></tr>
-                <tr><td class="player5name"></td><td><input type="number"></td></tr>
+                <tr><td class="player1name"></td><td><input type="number" min="-6" max="18"></td></tr>
+                <tr><td class="player2name"></td><td><input type="number" min="-6" max="18"></td></tr>
+                <tr><td class="player3name"></td><td><input type="number" min="-6" max="18"></td></tr>
+                <tr><td class="player4name"></td><td><input type="number" min="-6" max="18"></td></tr>
+                <tr><td class="player5name"></td><td><input type="number" min="-6" max="18"></td></tr>
             </table>
         </div>
     </div>
@@ -197,16 +197,16 @@
     </div>
 	
 	<div class="group">
-        <div class="title"><span class="gildie">Podsumowanie</span></div>
+        <div class="title"><span class="podsumowanie">Podsumowanie</span></div>
         <div class="description"> Sumowanie punktów z poszczególnych kategorii dla każdego gracza.</div>
         <div class="example"></div>
         <div>
             <table class="people podsumowanie">
-                <tr><td class="player1name"></td><td><input type="number"></td></tr>
-                <tr><td class="player2name"></td><td><input type="number"></td></tr>
-                <tr><td class="player3name"></td><td><input type="number"></td></tr>
-                <tr><td class="player4name"></td><td><input type="number"></td></tr>
-                <tr><td class="player5name"></td><td><input type="number"></td></tr>
+                <tr><td class="player1name"></td><td><input type="number" readonly></td></tr>
+                <tr><td class="player2name"></td><td><input type="number" readonly></td></tr>
+                <tr><td class="player3name"></td><td><input type="number" readonly></td></tr>
+                <tr><td class="player4name"></td><td><input type="number" readonly></td></tr>
+                <tr><td class="player5name"></td><td><input type="number" readonly></td></tr>
             </table>
         </div>
     </div>
@@ -230,12 +230,20 @@
     $(document).ready(function(undefined) {
         "use strict";
         //var $ = document.querySelectorAll.bind(document);
+		var playersName = '#player1name, #player2name, #player3name, #player4name, #player5name, #player6name, #player7name';
+		var playersClass = '.player1name, .player2name, .player3name, .player4name, .player5name, .player6name, .player7name';
         function setName(player, name) {
-            for(var i = 0; i < player.length; i++) {
-                player[i].textContent = name;
-            }
+            player.text(name);
         }
-        $('#player1name')[0].addEventListener('change', function() {
+		
+		function sumPoints(player) {
+			var points = 0;
+			$(player).not('.podsumowanie, .naukowe').each(function() {
+			points += $(this).value();
+			}); alert(points);
+			$('.people.podsumowanie > tr > td[class="player1name"]').next('td > input').value(points);
+        }
+        /*$('#player1name')[0].addEventListener('change', function() {
             setName($('.player1name'), this.value);
         });
         $('#player2name')[0].addEventListener('change', function() {
@@ -249,46 +257,50 @@
         });
         $('#player5name')[0].addEventListener('change', function() {
             setName($('.player5name'), this.value);
-        });
+        });*/
 		
+		$(document).on('change', playersName, function() { //alert(this.id)
+			setName($('.'+this.id), this.value);
+		});
+		
+		$(document).on('change', $(playersClass).next('td > input'), function() { alert($(this).parent('td').prev('td[class="player"]').class);
+			sumPoints($(this.class));
+		});
+		
+		var min_fields		= 3; // minimalna liczba graczy
 		var max_fields      = 7; // maksymalna liczba graczy
-		var wrapper         = $(".people"); //Pole wrapper
+		var wrapper         = $("table.people"); //Pole wrapper
 		var add_button      = $(".add_player"); // ID przycisku do dodawania
 		var rem_button		= $(".rem_player"); // ID przycisku do usuwania
-		
+
+		var nameClasses	= ".konflikt, .skarbiec, .cuda, .cywilne, .handlowe, .gildie, .podsumowanie";
 		var x = 5; // początkowa liczba graczy
 		$(add_button).click(function(e){ //kliknięcie przycisku
 			e.preventDefault();
 			if(x < max_fields){ 
 				x++; 
-				$(wrapper).append('<tr><td>Gracz '+x+'</td><td><input type="text" id="player'+x+'name"></td><td><a href="#" class="remove_field">X</a></td></tr>'); //add input box
+				$(wrapper).not(nameClasses+', .naukowe').append('<tr><td>Gracz '+x+'</td><td><input type="text" id="player'+x+'name"></td></tr>');
+				$(wrapper).filter(nameClasses).append('<tr><td class="player'+x+'name"></td><td><input type="number"></td></tr>');
+				
+				$(wrapper).filter('.naukowe').append('<tr><td class="player'+x+'name"></td><td>'+
+					'<div><span class="nauka-mala nauka1"></span> x <input type="number"></div>'+
+                    '<div><span class="nauka-mala nauka2"></span> x <input type="number"></div>'+
+                    '<div><span class="nauka-mala nauka3"></span> x <input type="number"></div> </td></tr>');
+					
+				//playersName += ', #player'+x+'name';
 			} 
 		});
-    
-		$(wrapper).on("click",".remove_field", function(e){ //user click on remove text
-			e.preventDefault(); $(this).parent('td').parent('tr').remove(); x--;
-		})
+		
+		$(rem_button).click(function(e){ //kliknięcie przycisku
+			e.preventDefault();
+			if(x > min_fields){ 
+				$("table.people tr:last-child").remove(); //usuń ostatniego gracza
+				x--; 
+				//playersName = playersName.substring(0,14 * x - 2);
+			} 
+		});
 		
     })();
-	
-	/*$(document).ready(function() {
-		var max_fields      = 7; //maximum input boxes allowed
-		var wrapper         = $(".people"); //Fields wrapper
-		var add_button      = $(".add_player"); //Add button ID
-		
-		var x = 5; //initlal text box count
-		$(add_button).click(function(e){ //on add input button click
-			e.preventDefault();
-			if(x < max_fields){ //max input box allowed
-				x++; //text box increment
-				$(wrapper).append('<tr><td>Gracz 6</td><td><input type="text" id="player6name"><a href="#" class="remove_field">X</a></td></tr>'); //add input box
-			} 
-		});
-    
-		$(wrapper).on("click",".remove_field", function(e){ //user click on remove text
-			e.preventDefault(); $(this).parent('tr').remove(); x--;
-		})
-	});*/
 </script>
 </body>
 </html>

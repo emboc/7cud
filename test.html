@@ -2,7 +2,7 @@
 <script type="text/javascript" src="jquery/jquery-3.1.1.js"></script>
 <script>
 $(document).ready(function() {
-    var max_fields      = 10; //maximum input boxes allowed
+   /* var max_fields      = 10; //maximum input boxes allowed
     var wrapper         = $(".input_fields_wrap"); //Fields wrapper
     var add_button      = $(".add_field_button"); //Add button ID
     
@@ -17,16 +17,112 @@ $(document).ready(function() {
     
     $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
         e.preventDefault(); $(this).parent('div').remove(); x--;
-    })
+    })*/
+	
+		var employees = '.employee1, .employee2, .employee3, .employee4';
+        function setName(empl, name) {
+            empl.text(name);
+        }
+		
+		$(document).on('change', employees, function(e) { //alert("Jestem!");
+			setName($('.'+this.id), this.value);
+		});
+		
+		
+		var max				= 20;
+		var empTab         = $("table.employee");
+		var add_button      = $(".btn01");
+
+		var numEmp = 3;
+		$(add_button).click(function(e){
+			e.preventDefault();
+			if(numEmp < max){ 
+				numEmp++; 
+				$(empTab).not('.sum, .bonus, .salary').append('<tr><td>Pracownik '+numEmp+'</td><td><input type="text" class="employee'+numEmp+'" id="employee'+numEmp+'"></td></tr>');
+				$(empTab).filter('.sum, .bonus, .salary').append('<tr><td class="employee'+numEmp+'"></td><td><input type="number"></td></tr>');
+				employees += (', .employee'+numEmp);
+				//alert(employees);
+			} 
+		});
+		
 });
 </script>
 <html>
 <head>
 </head>
 <body>
+<!--
 <div class="input_fields_wrap">
     <div><input type="text" name="mytext[]"></div>
 </div>
-<button class="add_field_button">Add More Fields</button>
+<button class="add_field_button">Add More Fields</button> -->
+
+<script>
+/*$(document).ready(function(){
+    $("#btn1").click(function(){
+        $("#test1").text("Hello world!");
+    });
+    $("#btn2").click(function(){
+        $("#test2").html("<b>Hello world!</b>");
+    });
+    $("#btn3").click(function(){
+        $("#test3").val("Dolly Duck");
+    });
+    $("#test3").change(function(){
+        $("#btn1").val("Tesco");
+    });
+});*/
+</script>
+
+<!--
+<p id="test1">This is a paragraph.</p>
+<p id="test2">This is another paragraph.</p>
+
+<p>Input field: <input type="text" id="test3" value="Mickey Mouse"></p>
+
+<button id="btn1">Set Text</button>
+<button id="btn2">Set HTML</button>
+<button id="btn3">Set Value</button> -->
+<br/><br/>
+    <div>
+	<h1>Pracownicy</h1>
+        <div>
+            <table class="employee">
+                <tr><td>Employee 1</td><td><input type="text" class="employee1" id="employee1"></td></tr>
+                <tr><td>Employee 2</td><td><input type="text" class="employee2" id="employee2"></td></tr>
+                <tr><td>Employee 3</td><td><input type="text" class="employee3" id="employee3"></td></tr>
+            </table>
+			<button class="btn01">Add employer</button>
+    </div>
+    <div>
+	<h3>Pensja</h3>
+        <div>
+            <table class="employee salary">
+                <tr><td class="employee1"></td><td><input type="number"></td></tr>
+                <tr><td class="employee2"></td><td><input type="number"></td></tr>
+                <tr><td class="employee3"></td><td><input type="number"></td></tr>
+            </table>
+        </div>
+    </div>
+    <div>
+	<h3>Bonus</h3>
+        <div>
+            <table class="employee bonus">
+                <tr><td class="employee1"></td><td><input type="number"></td></tr>
+                <tr><td class="employee2"></td><td><input type="number"></td></tr>
+                <tr><td class="employee3"></td><td><input type="number"></td></tr>
+            </table>
+        </div>
+    </div>
+	<div>
+	<h3>Łącznie</h3>
+        <div>
+            <table class="employer sum">
+                <tr><td class="employee1"></td><td><input type="number"></td></tr>
+                <tr><td class="employee2"></td><td><input type="number"></td></tr>
+                <tr><td class="employee3"></td><td><input type="number"></td></tr>
+            </table>
+        </div>
+    </div>
 </body>
 </html>
