@@ -1,4 +1,4 @@
-# Aplikacja do wyliczania wyniku w grze planszowej "7 Cudów"
+# Aplikacja do wyliczania wyniku w grze planszowej "7 Cudów Świata"
 
 ## Do zrobienia
 * Przycisk dodawania kolejnych graczy
