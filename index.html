@@ -13,7 +13,7 @@
     <link rel="apple-touch-startup-image" href="css/siedemcudow192.png">
 
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    <title>7 Cudów</title>
+    <title>7 Cudów Świata</title>
 </head>
 <body>
 <div>
@@ -35,8 +35,6 @@
                 <tr><td>Gracz 1</td><td><input type="text" id="player1name"></td></tr>
                 <tr><td>Gracz 2</td><td><input type="text" id="player2name"></td></tr>
                 <tr><td>Gracz 3</td><td><input type="text" id="player3name"></td></tr>
-                <tr><td>Gracz 4</td><td><input type="text" id="player4name"></td></tr>
-                <tr><td>Gracz 5</td><td><input type="text" id="player5name"></td></tr>
             </table>
 			<button class="add_player">Dodaj nowego gracza</button><button class="rem_player">Usuń ostatniego gracza</button>
         </div>
@@ -48,11 +46,9 @@
         <div class="example">Przykład: Aleksandria zakończyła grę z żetonami: +1, +3, +5, -1, -1, -1 czyli w sumie 6 punktów.</div>
         <div>
             <table class="people konflikt">
-                <tr><td class="player1name"></td><td><input type="number" min="-6" max="18"></td></tr>
-                <tr><td class="player2name"></td><td><input type="number" min="-6" max="18"></td></tr>
-                <tr><td class="player3name"></td><td><input type="number" min="-6" max="18"></td></tr>
-                <tr><td class="player4name"></td><td><input type="number" min="-6" max="18"></td></tr>
-                <tr><td class="player5name"></td><td><input type="number" min="-6" max="18"></td></tr>
+                <tr><td class="player1name"></td><td><input class="player1points" type="number"></td></tr>
+                <tr><td class="player2name"></td><td><input class="player2points" type="number"></td></tr>
+                <tr><td class="player3name"></td><td><input class="player3points" type="number"></td></tr>
             </table>
         </div>
     </div>
@@ -63,11 +59,9 @@
         <div class="example">Przykład: Aleksandria skończyła grę z 14 monetami w skarbcu za co otrzymuje 4 punkty zwycięstwa (4 razy po 3 monety i 2 monety reszty).</div>
         <div>
             <table class="people skarbiec">
-                <tr><td class="player1name"></td><td><input type="number"></td></tr>
-                <tr><td class="player2name"></td><td><input type="number"></td></tr>
-                <tr><td class="player3name"></td><td><input type="number"></td></tr>
-                <tr><td class="player4name"></td><td><input type="number"></td></tr>
-                <tr><td class="player5name"></td><td><input type="number"></td></tr>
+                <tr><td class="player1name"></td><td><input class="player1points" type="number"></td></tr>
+                <tr><td class="player2name"></td><td><input class="player2points" type="number"></td></tr>
+                <tr><td class="player3name"></td><td><input class="player3points" type="number"></td></tr>
             </table>
         </div>
     </div>
@@ -78,11 +72,9 @@
         <div class="example">Przykład: Aleksandria zakończyła wszystkie 3 etapy budowy Cudu Świata (strona planszy z symbolem [A]), warte w sumie 10 punktów zwycięstwa (3 punkty za pierwszy etap i 7 punktów za trzeci etap).</div>
         <div>
             <table class="people cuda">
-                <tr><td class="player1name"></td><td><input type="number"></td></tr>
-                <tr><td class="player2name"></td><td><input type="number"></td></tr>
-                <tr><td class="player3name"></td><td><input type="number"></td></tr>
-                <tr><td class="player4name"></td><td><input type="number"></td></tr>
-                <tr><td class="player5name"></td><td><input type="number"></td></tr>
+                <tr><td class="player1name"></td><td><input class="player1points" type="number"></td></tr>
+                <tr><td class="player2name"></td><td><input class="player2points" type="number"></td></tr>
+                <tr><td class="player3name"></td><td><input class="player3points" type="number"></td></tr>
             </table>
         </div>
     </div>
@@ -93,11 +85,9 @@
         <div class="example">Przykład: Aleksandria wybudowała następujące budowle cywilne: Ołtarz (2 PZ), Akwedukt (5 PZ) i Ratusz Miejski (6 PZ), w sumie 13 punktów zwycięstwa.</div>
         <div>
             <table class="people cywilne">
-                <tr><td class="player1name"></td><td><input type="number"></td></tr>
-                <tr><td class="player2name"></td><td><input type="number"></td></tr>
-                <tr><td class="player3name"></td><td><input type="number"></td></tr>
-                <tr><td class="player4name"></td><td><input type="number"></td></tr>
-                <tr><td class="player5name"></td><td><input type="number"></td></tr>
+                <tr><td class="player1name"></td><td><input class="player1points" type="number"></td></tr>
+                <tr><td class="player2name"></td><td><input class="player2points" type="number"></td></tr>
+                <tr><td class="player3name"></td><td><input class="player3points" type="number"></td></tr>
             </table>
         </div>
     </div>
@@ -134,33 +124,21 @@
             <table class="people naukowe">
                 <tr><td class="player1name"></td>
                 <td>
-                    <div><span class="nauka-mala nauka1"></span> x <input type="number"></div>
-                    <div><span class="nauka-mala nauka2"></span> x <input type="number"></div>
-                    <div><span class="nauka-mala nauka3"></span> x <input type="number"></div>                    
+                    <div><span class="nauka-mala nauka1"></span> x <input class="player1scpoints" type="number"></div>
+                    <div><span class="nauka-mala nauka2"></span> x <input class="player1scpoints" type="number"></div>
+                    <div><span class="nauka-mala nauka3"></span> x <input class="player1scpoints" type="number"></div>                    
                 </td></tr>
                 <tr><td class="player2name"></td>
                 <td>
-                    <div><span class="nauka-mala nauka1"></span> x <input type="number"></div>
-                    <div><span class="nauka-mala nauka2"></span> x <input type="number"></div>
-                    <div><span class="nauka-mala nauka3"></span> x <input type="number"></div>                    
+                    <div><span class="nauka-mala nauka1"></span> x <input class="player2scpoints" type="number"></div>
+                    <div><span class="nauka-mala nauka2"></span> x <input class="player2scpoints" type="number"></div>
+                    <div><span class="nauka-mala nauka3"></span> x <input class="player2scpoints" type="number"></div>                    
                 </td></tr>
                 <tr><td class="player3name"></td>
                 <td>
-                    <div><span class="nauka-mala nauka1"></span> x <input type="number"></div>
-                    <div><span class="nauka-mala nauka2"></span> x <input type="number"></div>
-                    <div><span class="nauka-mala nauka3"></span> x <input type="number"></div>                    
-                </td></tr>
-                <tr><td class="player4name"></td>
-                <td>
-                    <div><span class="nauka-mala nauka1"></span> x <input type="number"></div>
-                    <div><span class="nauka-mala nauka2"></span> x <input type="number"></div>
-                    <div><span class="nauka-mala nauka3"></span> x <input type="number"></div>                    
-                </td></tr>
-                <tr><td class="player5name"></td>
-                <td>
-                    <div><span class="nauka-mala nauka1"></span> x <input type="number"></div>
-                    <div><span class="nauka-mala nauka2"></span> x <input type="number"></div>
-                    <div><span class="nauka-mala nauka3"></span> x <input type="number"></div>                    
+                    <div><span class="nauka-mala nauka1"></span> x <input class="player3scpoints" type="number"></div>
+                    <div><span class="nauka-mala nauka2"></span> x <input class="player3scpoints" type="number"></div>
+                    <div><span class="nauka-mala nauka3"></span> x <input class="player3scpoints" type="number"></div>                    
                 </td></tr>
             </table>
         </div>
@@ -172,11 +150,9 @@
         <div class="example">Przykład: Aleksandria wystawiła Dom Handlowy. Ta budowla jest warta 2 punkty zwycięstwa za każdą szarą kartę w mieście. Aleksandria ma 2 szare karty zatem otrzymuje 4 punkty zwycięstwa.</div>
         <div>
             <table class="people handlowe">
-                <tr><td class="player1name"></td><td><input type="number"></td></tr>
-                <tr><td class="player2name"></td><td><input type="number"></td></tr>
-                <tr><td class="player3name"></td><td><input type="number"></td></tr>
-                <tr><td class="player4name"></td><td><input type="number"></td></tr>
-                <tr><td class="player5name"></td><td><input type="number"></td></tr>
+                <tr><td class="player1name"></td><td><input class="player1points" type="number"></td></tr>
+                <tr><td class="player2name"></td><td><input class="player2points" type="number"></td></tr>
+                <tr><td class="player3name"></td><td><input class="player3points" type="number"></td></tr>
             </table>
         </div>
     </div>
@@ -187,11 +163,9 @@
         <div class="example"></div>
         <div>
             <table class="people gildie">
-                <tr><td class="player1name"></td><td><input type="number"></td></tr>
-                <tr><td class="player2name"></td><td><input type="number"></td></tr>
-                <tr><td class="player3name"></td><td><input type="number"></td></tr>
-                <tr><td class="player4name"></td><td><input type="number"></td></tr>
-                <tr><td class="player5name"></td><td><input type="number"></td></tr>
+                <tr><td class="player1name"></td><td><input class="player1points" type="number"></td></tr>
+                <tr><td class="player2name"></td><td><input class="player2points" type="number"></td></tr>
+                <tr><td class="player3name"></td><td><input class="player3points" type="number"></td></tr>
             </table>
         </div>
     </div>
@@ -202,11 +176,9 @@
         <div class="example"></div>
         <div>
             <table class="people podsumowanie">
-                <tr><td class="player1name"></td><td><input type="number" readonly></td></tr>
-                <tr><td class="player2name"></td><td><input type="number" readonly></td></tr>
-                <tr><td class="player3name"></td><td><input type="number" readonly></td></tr>
-                <tr><td class="player4name"></td><td><input type="number" readonly></td></tr>
-                <tr><td class="player5name"></td><td><input type="number" readonly></td></tr>
+                <tr><td class="player1name"></td><td><input class="player1total" type="number" readonly></td></tr>
+                <tr><td class="player2name"></td><td><input class="player2total" type="number" readonly></td></tr>
+                <tr><td class="player3name"></td><td><input class="player3total" type="number" readonly></td></tr>
             </table>
         </div>
     </div>
@@ -236,12 +208,20 @@
             player.text(name);
         }
 		
-		function sumPoints(player) {
+		function sumPoints(playerPoints) {
 			var points = 0;
-			$(player).not('.podsumowanie, .naukowe').each(function() {
-			points += $(this).value();
-			}); alert(points);
-			$('.people.podsumowanie > tr > td[class="player1name"]').next('td > input').value(points);
+			var min = 5;
+			$(playerPoints).each(function(){ 
+				if(this.className.substring(7) == 'scpoints') {
+					points += parseInt(Math.pow(this.value,2)) || 0;
+					min = Math.min(min,this.value || 0);
+				}
+				else {
+					points += parseInt(this.value) || 0;
+				}
+			});
+			var totalPoints = playerPoints[0].className.substring(0,7)+'total';
+			$('.'+totalPoints).val(points + 7 * min);
         }
         /*$('#player1name')[0].addEventListener('change', function() {
             setName($('.player1name'), this.value);
@@ -259,39 +239,40 @@
             setName($('.player5name'), this.value);
         });*/
 		
-		$(document).on('change', playersName, function() { //alert(this.id)
+		$(document).on('change', playersName, function() {
 			setName($('.'+this.id), this.value);
 		});
 		
-		$(document).on('change', $(playersClass).next('td > input'), function() { alert($(this).parent('td').prev('td[class="player"]').class);
-			sumPoints($(this.class));
+		$(document).on('change', "input[class$='points']", function() { 
+			var classList = $("[class ^= "+this.className.substring(0,7)+"][class $='points']");
+			sumPoints(classList);
 		});
 		
 		var min_fields		= 3; // minimalna liczba graczy
 		var max_fields      = 7; // maksymalna liczba graczy
-		var wrapper         = $("table.people"); //Pole wrapper
+		var wrapper         = $("table.people"); // klasa people
 		var add_button      = $(".add_player"); // ID przycisku do dodawania
 		var rem_button		= $(".rem_player"); // ID przycisku do usuwania
 
-		var nameClasses	= ".konflikt, .skarbiec, .cuda, .cywilne, .handlowe, .gildie, .podsumowanie";
-		var x = 5; // początkowa liczba graczy
-		$(add_button).click(function(e){ //kliknięcie przycisku
+		var nameClasses	= ".konflikt, .skarbiec, .cuda, .cywilne, .handlowe, .gildie";
+		var x = 3; // początkowa liczba graczy
+		$(add_button).click(function(e){ 
 			e.preventDefault();
 			if(x < max_fields){ 
 				x++; 
-				$(wrapper).not(nameClasses+', .naukowe').append('<tr><td>Gracz '+x+'</td><td><input type="text" id="player'+x+'name"></td></tr>');
-				$(wrapper).filter(nameClasses).append('<tr><td class="player'+x+'name"></td><td><input type="number"></td></tr>');
-				
+				$(wrapper).not(nameClasses+', .naukowe, .podsumowanie').append('<tr><td>Gracz '+x+'</td><td><input type="text" id="player'+x+'name"></td></tr>');
+				$(wrapper).filter(nameClasses).append('<tr><td class="player'+x+'name"></td><td><input class="player'+x+'points" type="number"></td></tr>');
+				$(wrapper).filter('.podsumowanie').append('<tr><td class="player'+x+'name"></td><td><input class="player'+x+'total" type="number" readonly></td></tr>');
 				$(wrapper).filter('.naukowe').append('<tr><td class="player'+x+'name"></td><td>'+
-					'<div><span class="nauka-mala nauka1"></span> x <input type="number"></div>'+
-                    '<div><span class="nauka-mala nauka2"></span> x <input type="number"></div>'+
-                    '<div><span class="nauka-mala nauka3"></span> x <input type="number"></div> </td></tr>');
+					'<div><span class="nauka-mala nauka1"></span> x <input class="player'+x+'scpoints" type="number"></div>'+
+                    '<div><span class="nauka-mala nauka2"></span> x <input class="player'+x+'scpoints" type="number"></div>'+
+                    '<div><span class="nauka-mala nauka3"></span> x <input class="player'+x+'scpoints" type="number"></div> </td></tr>');
 					
 				//playersName += ', #player'+x+'name';
 			} 
 		});
 		
-		$(rem_button).click(function(e){ //kliknięcie przycisku
+		$(rem_button).click(function(e){
 			e.preventDefault();
 			if(x > min_fields){ 
 				$("table.people tr:last-child").remove(); //usuń ostatniego gracza
