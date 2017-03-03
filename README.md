@@ -6,3 +6,9 @@
 * Sumowanie dla wszystkich punktów (1 - 7)
 * Sumowanie dla punktu 5 (budowle naukowe)
 * Podsumowanie - zmiana klasy (kolor)
+
+* Dopisać klase gracz (linia 34 - 263)
+* Podsumowanie - tekst zamiast input
+* Usunięcie substringów i zastąpienie szablonami
+* Usunięcie pól formularzy oraz id i class
+* Dynamiczne dodawanie i usuwanie gracza
