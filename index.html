@@ -209,6 +209,7 @@
         }*/
 		
 		var numPlayer = 1;
+		var playerList = [];
 		
 		function addPlayer(){
 			var PlayerClass = {
@@ -290,6 +291,7 @@
 			PlayerClass.$pomocnicze.forEach( function($e){
 				$e.find('input').on('change', function(){
 					sumPlayer(PlayerClass);
+					markWinner(playerList);
 				})
 			})
 			
@@ -298,7 +300,8 @@
 				if(x > min_fields){
 					var potw = confirm('Czy na pewno chcesz usunąć gracza "'+PlayerClass.nazwa+'"?');
 					if(potw){
-						removePlayer(PlayerClass);
+						removePlayer(PlayerClass, playerList);
+						markWinner(playerList);
 					}
 				}
 				else{
@@ -309,14 +312,54 @@
 			return PlayerClass;
 		}
 		
-		function removePlayer(player)
+		//usuwanie gracza
+		function removePlayer(player, playerList1)
 		{
+			for(var i = 0; i < playerList1.length; i++)
+			{
+				if(playerList1[i].nazwa === player.nazwa)
+				{
+					playerList1.splice(i,1);
+					break;
+				}
+			}
 			// usuniecie pomocnicze
 			player.$pomocnicze.forEach(function($e) {
 				$e.remove();
 			})
 			player.$pomocnicze = [];
 			x--;
+		}
+		
+		//oznaczanie zwyciezcy innym kolorem
+		function markWinner(players)
+		{
+			var maxPoints = -6;
+			var maxCoins = 0;
+			
+			if(players.length > 0)
+				maxPoints = players[0].suma;
+			
+			//wylicznie maksymalnej liczby punktow
+			maxPoints = Math.max.apply(maxPoints,players.map(function(p){return p.suma}));
+			maxCoins = Math.max.apply(maxCoins,players.map(function(p){ 
+			if(p.suma === maxPoints)
+				return p.skarbiec;
+			return 0;
+			}));
+			
+			players.forEach(function(e){
+				if(e.suma === maxPoints && e.skarbiec === maxCoins)
+				{
+					//e.$suma.css({"color":"green"});
+					e.$pomocnicze[e.$pomocnicze.length - 1].find('td').css({"color":"green"});
+				}
+				else
+				{
+					//e.$suma.css({"color":""});
+					e.$pomocnicze[e.$pomocnicze.length - 1].find('td').css({"color":""});
+				}
+			})
 		}
 		
 		function sumPlayer(player){
@@ -398,7 +441,7 @@
 
 		for(var i = 0; i < min_fields; i++)
 		{
-			addPlayer();
+			playerList.push(addPlayer());
 		}
 		
 		var nameClasses	= ".konflikt, .skarbiec, .cuda, .cywilne, .handlowe, .gildie";
@@ -406,7 +449,7 @@
 		$(add_button).click(function(e){ 
 			e.preventDefault();
 			if(x < max_fields){
-				addPlayer();
+				playerList.push(addPlayer());
 				x++;
 			}
 			return;

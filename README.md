@@ -12,3 +12,4 @@
 * Usunięcie substringów i zastąpienie szablonami
 * Usunięcie pól formularzy oraz id i class
 * Dynamiczne dodawanie i usuwanie gracza
+* Zaznaczanie zwycięzcy (nazwa i punkty) na kolor zielony
